@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">AndroidMemoryGame</string>
+    <string name="startGame">Start Game!</string>
+    <string name="pause">Pause</string>
+    <string name="title">MemoryGame</string>
+
 </resources>
