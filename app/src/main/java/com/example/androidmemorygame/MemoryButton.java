@@ -33,10 +33,10 @@ public class MemoryButton extends AppCompatButton {
 
         setBackground(back);
 
-//        GridLayout.LayoutParams tempParams = new GridLayout.LayoutParams(GridLayout.spec(r), GridLayout.spec(c));
-//        tempParams.width = (int) getResources().getDisplayMetrics().density * 50;
-//        tempParams.height = (int) getResources().getDisplayMetrics().density * 50;
-//        setLayoutParams(tempParams);
+        GridLayout.LayoutParams tempParams = new GridLayout.LayoutParams(GridLayout.spec(r), GridLayout.spec(c));
+        tempParams.width = (int) getResources().getDisplayMetrics().density * 50;
+        tempParams.height = (int) getResources().getDisplayMetrics().density * 50;
+        setLayoutParams(tempParams);
     }
 
     public boolean isMatched() {
