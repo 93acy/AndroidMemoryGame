@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     ProgressBar progressbar;
     TextView progressbartext;
     boolean firstTime = true;
+    Thread bgThread;
 
 
     @Override
@@ -51,6 +52,15 @@ public class MainActivity extends AppCompatActivity {
         webURL = ((EditText)findViewById(R.id.webURL)).getText().toString();
         Button fetch = findViewById(R.id.fetch);
         fetch.setOnClickListener(v->{
+
+            if(bgThread != null){
+                bgThread.interrupt();
+                for(int i=0; i<20; i++){
+
+                    ImageView imageview = findViewById(ids[i]);
+                    imageview.setImageBitmap(null);
+                }
+            }
 
             if(firstTime == false){
                 for(int i=0; i<20; i++){
@@ -65,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
 
-            new Thread(new Runnable(){
+            bgThread = new Thread(new Runnable(){
                 @Override
                 public void run(){
 
@@ -75,7 +85,8 @@ public class MainActivity extends AppCompatActivity {
                     }
                     firstTime = false;
                 }
-            }).start();
+            });
+            bgThread.start();
         });
 
         progressbar = findViewById(R.id.progressbar);
@@ -99,6 +110,10 @@ public class MainActivity extends AppCompatActivity {
             }
             br.close();
 
+            if (Thread.interrupted()){
+                return false;
+            }
+
 
             //<img src="https://cdn.stocksnap.io/img-thumbs/280h/bed-family_JHFDNCSWTX.jpg"
             Pattern pattern = Pattern.compile("<img src=\"([^\"]+)\\.(jpg|png|jpeg)");
@@ -109,6 +124,10 @@ public class MainActivity extends AppCompatActivity {
                     String tag = matcher.group();
                     String imgURL = tag.substring(10);
                     imgURLs.add(imgURL);
+
+                    if (Thread.interrupted()){
+                        return false;
+                    }
 
                 }
             }
@@ -141,6 +160,10 @@ public class MainActivity extends AppCompatActivity {
                 }
                 out.close();
                 in.close();
+
+                if (Thread.interrupted()){
+                    return false;
+                }
 
                 displayImage(desFiles, i);
 
