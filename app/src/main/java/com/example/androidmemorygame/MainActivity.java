@@ -69,14 +69,6 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void run(){
 
-                    /*if(firstTime == false){
-                        for(int i=0; i<destFiles.size(); i++){
-
-                            if(destFiles.get(i).exists()){
-                                destFiles.get(i).delete();
-                            }
-                        }
-                    }*/
                     if(downloadWeb(((EditText)findViewById(R.id.webURL)).getText().toString())){
                         List<File> destfiles = createFilesDir();
                         downloadImg(imgURLs, destfiles);
