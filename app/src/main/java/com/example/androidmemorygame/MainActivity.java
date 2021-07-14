@@ -28,7 +28,6 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-//todolist: thread interrupt(status check), onclickListener(where to put to make image clickable), delete files when refetch
 
 public class MainActivity extends AppCompatActivity {
     String webURL;
@@ -41,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<Integer> selected = new ArrayList<>();
     ProgressBar progressbar;
     TextView progressbartext;
-    int i=0;
+    boolean firstTime = true;
 
 
     @Override
@@ -53,30 +52,26 @@ public class MainActivity extends AppCompatActivity {
         Button fetch = findViewById(R.id.fetch);
         fetch.setOnClickListener(v->{
 
+            if(firstTime == false){
+                for(int i=0; i<destFiles.size(); i++){
+
+                    ImageView imageview = findViewById(ids[i]);
+                    imageview.setImageBitmap(null);
+
+                }
+            }
 
             new Thread(new Runnable(){
                 @Override
                 public void run(){
+
                     downloadWeb(((EditText)findViewById(R.id.webURL)).getText().toString());
                     List<File> destfiles = createFilesDir();
                     downloadImg(imgURLs, destfiles);
+                    firstTime = false;
                 }
             }).start();
         });
-
-        for(int i=0; i<20; i++){
-            ImageView imageview = findViewById(ids[i]);
-            imageview.setOnClickListener(v -> {
-                imageview.setColorFilter(this.getResources().getColor(R.color.purple_200));
-                selected.add(imageview.getId());
-                count++;
-                if(count==6){
-                    Intent intent = new Intent(this, NextActivity.class);
-                    intent.putIntegerArrayListExtra("selected", selected);
-                    startActivity(intent);
-                }
-            });
-        }
 
         progressbar = findViewById(R.id.progressbar);
         progressbar.setMax(100);
@@ -176,6 +171,17 @@ public class MainActivity extends AppCompatActivity {
                 ImageView imageview = findViewById(ids[i]);
                 imageview.setImageBitmap(bitmap);
 
+                imageview.setOnClickListener(v -> {
+                    imageview.setColorFilter(MainActivity.this.getResources().getColor(R.color.purple_200));
+                    selected.add(imageview.getId());
+                    count++;
+                    if(count==6){
+                        Intent intent = new Intent(MainActivity.this, NextActivity.class);
+                        intent.putIntegerArrayListExtra("selected", selected);
+                        startActivity(intent);
+                    }
+                });
+
                 if (i >= 19) {
                     progressbar.setVisibility(View.GONE);
                     progressbartext.setText("");
@@ -187,4 +193,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
 }
