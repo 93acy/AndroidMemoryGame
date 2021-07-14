@@ -28,7 +28,6 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-//todolist: thread interrupt(status check), delete files when refetch
 
 public class MainActivity extends AppCompatActivity {
     String webURL;
