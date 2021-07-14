@@ -28,6 +28,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+//todolist: thread interrupt(status check), delete files when refetch
 
 public class MainActivity extends AppCompatActivity {
     String webURL;
@@ -53,11 +54,15 @@ public class MainActivity extends AppCompatActivity {
         fetch.setOnClickListener(v->{
 
             if(firstTime == false){
-                for(int i=0; i<destFiles.size(); i++){
+                for(int i=0; i<20; i++){
 
                     ImageView imageview = findViewById(ids[i]);
                     imageview.setImageBitmap(null);
 
+                    File file = new File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), String.format("%s.jpg", i+1));
+                    if(file.exists()){
+                        file.delete();
+                    }
                 }
             }
 
@@ -65,9 +70,18 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void run(){
 
-                    downloadWeb(((EditText)findViewById(R.id.webURL)).getText().toString());
-                    List<File> destfiles = createFilesDir();
-                    downloadImg(imgURLs, destfiles);
+                    /*if(firstTime == false){
+                        for(int i=0; i<destFiles.size(); i++){
+
+                            if(destFiles.get(i).exists()){
+                                destFiles.get(i).delete();
+                            }
+                        }
+                    }*/
+                    if(downloadWeb(((EditText)findViewById(R.id.webURL)).getText().toString())){
+                        List<File> destfiles = createFilesDir();
+                        downloadImg(imgURLs, destfiles);
+                    }
                     firstTime = false;
                 }
             }).start();
