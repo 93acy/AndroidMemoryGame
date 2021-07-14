@@ -64,8 +64,9 @@ public class MainActivity extends AppCompatActivity {
 
             if(firstTime == false){
                 for(int i=0; i<20; i++){
-
+                    count=0;
                     ImageView imageview = findViewById(ids[i]);
+                    imageview.setColorFilter(null);
                     imageview.setImageBitmap(null);
 
                     File file = new File(getExternalFilesDir(Environment.DIRECTORY_PICTURES), String.format("%s.jpg", i+1));
