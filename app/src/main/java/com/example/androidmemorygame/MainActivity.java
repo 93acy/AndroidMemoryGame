@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
     boolean firstTime = true;
     Thread bgThread;
     Button startGame;
+    MediaPlayer music;
 
 
     @Override
@@ -55,15 +57,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        MediaPlayer music = MediaPlayer.create(MainActivity.this, R.raw.maplestory);
+        music.start();
+
         webURL = ((EditText) findViewById(R.id.webURL)).getText().toString();
 
         selectText=findViewById(R.id.selectText);
 
         startGame = findViewById(R.id.startGameBtn);
         startGame.setOnClickListener(v->{
+            music.release();
             Intent intent = new Intent(MainActivity.this, GameActivity.class);
             intent.putStringArrayListExtra("selected", selected);
             startActivity(intent);
+
         });
 
         Button fetch = findViewById(R.id.fetch);
