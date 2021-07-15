@@ -205,4 +205,11 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             }, 3000);
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
 }

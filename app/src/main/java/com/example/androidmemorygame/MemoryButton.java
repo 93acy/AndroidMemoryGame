@@ -32,7 +32,7 @@ public class MemoryButton extends AppCompatButton {
         //noinspection RestrictedApi
         front = BitmapFactory.decodeFile(frontDrawablePath);
         //noinspection RestrictedApi
-        back = AppCompatDrawableManager.get().getDrawable(context, R.drawable.cross);
+        back = AppCompatDrawableManager.get().getDrawable(context, R.drawable.placeholder_image2);
 
         setBackground(back);
 

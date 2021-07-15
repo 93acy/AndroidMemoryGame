@@ -1,261 +1,203 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#ffffe0">
+    android:layout_height="match_parent">
 
-    <LinearLayout
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        android:layout_weight="1.2">
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/background_image" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
 
         <EditText
             android:id="@+id/webURL"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="15">
+            android:layout_width="240dp"
+            android:layout_height="40dp"
+            android:background="@drawable/border"
+            android:hint="@string/input"
+            android:inputType="textUri"
+            android:padding="8dp"
 
-        </EditText>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/fetch"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.045" />
+
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/fetch"
             android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:background="@color/blue"
+            android:text="Fetch"
+            android:textColor="@color/white"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@id/webURL"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.045" />
+
+        <GridLayout
+            android:id="@+id/photoGrid"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="fetch">
+            android:columnCount="4"
+            android:rowCount="5"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/webURL"
+            app:layout_constraintVertical_bias="0.1"
+            tools:context=".GridXMLActivity">
 
-        </androidx.appcompat.widget.AppCompatButton>
-    </LinearLayout>
+            <ImageView
+                android:id="@+id/imageview1"
+                style="@style/imgDisplayStyle"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        android:layout_weight="3">
 
-        <ImageView
-            android:id="@+id/imageview1"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:scaleType="centerCrop">
+            <ImageView
+                android:id="@+id/imageview2"
+                style="@style/imgDisplayStyle"/>
 
-        </ImageView>
-        <ImageView
-            android:id="@+id/imageview2"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:scaleType="centerCrop">
+            <ImageView
+                android:id="@+id/imageview3"
+                style="@style/imgDisplayStyle"/>
 
-        </ImageView>
-        <ImageView
-            android:id="@+id/imageview3"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:scaleType="centerCrop">
+            <ImageView
+                android:id="@+id/imageview4"
+                style="@style/imgDisplayStyle"/>
 
-        </ImageView>
-        <ImageView
-            android:id="@+id/imageview4"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:scaleType="centerCrop">
-        </ImageView>
-    </LinearLayout>
+            <ImageView
+                android:id="@+id/imageview5"
+                style="@style/imgDisplayStyle"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        android:layout_weight="3">
+            <ImageView
+                android:id="@+id/imageview6"
+                style="@style/imgDisplayStyle"/>
 
-        <ImageView
-            android:id="@+id/imageview5"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:scaleType="centerCrop">
+            <ImageView
+                android:id="@+id/imageview7"
+                style="@style/imgDisplayStyle"/>
 
-        </ImageView>
-        <ImageView
-            android:id="@+id/imageview6"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:scaleType="centerCrop">
+            <ImageView
+                android:id="@+id/imageview8"
+                style="@style/imgDisplayStyle"/>
 
-        </ImageView>
-        <ImageView
-            android:id="@+id/imageview7"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:scaleType="centerCrop">
+            <ImageView
+                android:id="@+id/imageview9"
+                style="@style/imgDisplayStyle"/>
 
-        </ImageView>
-        <ImageView
-            android:id="@+id/imageview8"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:scaleType="centerCrop">
+            <ImageView
+                android:id="@+id/imageview10"
+                style="@style/imgDisplayStyle"/>
 
-        </ImageView>
-    </LinearLayout>
+            <ImageView
+                android:id="@+id/imageview11"
+                style="@style/imgDisplayStyle"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        android:layout_weight="3">
+            <ImageView
+                android:id="@+id/imageview12"
+                style="@style/imgDisplayStyle"/>
 
-        <ImageView
-            android:id="@+id/imageview9"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:scaleType="centerCrop">
+            <ImageView
+                android:id="@+id/imageview13"
+                style="@style/imgDisplayStyle"/>
 
-        </ImageView>
-        <ImageView
-            android:id="@+id/imageview10"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:scaleType="centerCrop">
+            <ImageView
+                android:id="@+id/imageview14"
+                style="@style/imgDisplayStyle"/>
 
-        </ImageView>
-        <ImageView
-            android:id="@+id/imageview11"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:scaleType="centerCrop">
+            <ImageView
+                android:id="@+id/imageview15"
+                style="@style/imgDisplayStyle"/>
 
-        </ImageView>
-        <ImageView
-            android:id="@+id/imageview12"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:scaleType="centerCrop">
+            <ImageView
+                android:id="@+id/imageview16"
+                style="@style/imgDisplayStyle"/>
 
-        </ImageView>
-    </LinearLayout>
+            <ImageView
+                android:id="@+id/imageview17"
+                style="@style/imgDisplayStyle"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        android:layout_weight="3">
+            <ImageView
+                android:id="@+id/imageview18"
+                style="@style/imgDisplayStyle"/>
 
-        <ImageView
-            android:id="@+id/imageview13"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:scaleType="centerCrop">
+            <ImageView
+                android:id="@+id/imageview19"
+                style="@style/imgDisplayStyle"/>
 
-        </ImageView>
-        <ImageView
-            android:id="@+id/imageview14"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:scaleType="centerCrop">
+            <ImageView
+                android:id="@+id/imageview20"
+                style="@style/imgDisplayStyle"/>
 
-        </ImageView>
-        <ImageView
-            android:id="@+id/imageview15"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:scaleType="centerCrop">
+        </GridLayout>
 
-        </ImageView>
-        <ImageView
-            android:id="@+id/imageview16"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:scaleType="centerCrop">
+        <TextView
+            android:id="@+id/selectText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:background="@color/blue"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.8"
+            app:layout_constraintTop_toBottomOf="@id/photoGrid"
+            app:layout_constraintVertical_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/startGameBtn"/>
 
-        </ImageView>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        android:layout_weight="3">
-
-        <ImageView
-            android:id="@+id/imageview17"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:scaleType="centerCrop">
-
-        </ImageView>
-        <ImageView
-            android:id="@+id/imageview18"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:scaleType="centerCrop">
-
-        </ImageView>
-        <ImageView
-            android:id="@+id/imageview19"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:scaleType="centerCrop">
-
-        </ImageView>
-        <ImageView
-            android:id="@+id/imageview20"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:scaleType="centerCrop">
-
-        </ImageView>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        android:layout_weight="0.5">
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/startGameBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/blue2"
+            android:text="Play"
+            android:textColor="@color/white"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/photoGrid"
+            app:layout_constraintStart_toEndOf="@id/selectText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintVertical_bias="0.5"/>
 
         <ProgressBar
             android:id="@+id/progressbar"
-            style="@android:style/Widget.Material.Light.ProgressBar.Horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone">
-        </ProgressBar>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:orientation="horizontal"
-        android:layout_weight="0.5">
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="200dp"
+            android:layout_height="16dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/photoGrid"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.3"/>
 
         <TextView
             android:id="@+id/progressbartext"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center">
-        </TextView>
-    </LinearLayout>
+            android:textSize="19sp"
+            android:textColor="@color/brown"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/progressbar"
+            app:layout_constraintVertical_bias="0.2"/>
 
-</LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>
