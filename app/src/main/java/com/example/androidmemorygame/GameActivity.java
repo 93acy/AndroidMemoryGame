@@ -1,7 +1,10 @@
 package com.example.androidmemorygame;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
@@ -11,9 +14,14 @@ import android.widget.Chronometer;
 import android.widget.GridLayout;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Random;
 
-public class GameActivity extends AppCompatActivity implements View.OnClickListener {
+public class GameActivity<IntegerArray> extends AppCompatActivity implements View.OnClickListener {
+
+    ActivityResultLauncher<Intent> rlselected;
+
+    private ArrayList<Integer> selected;
 
     private int numberOfElements;
 
@@ -51,12 +59,17 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
         buttonGraphics = new int[numberOfElements / 2];
 
-        buttonGraphics[0] = R.drawable.b1;
-        buttonGraphics[1] = R.drawable.b2;
-        buttonGraphics[2] = R.drawable.b3;
-        buttonGraphics[3] = R.drawable.b4;
-        buttonGraphics[4] = R.drawable.b5;
-        buttonGraphics[5] = R.drawable.b6;
+        for(int i =0; i<buttonGraphics.length;i++){
+
+            buttonGraphics[i]=selected.get(i);
+        }
+
+//        buttonGraphics[0] = R.drawable.b1;
+//        buttonGraphics[1] = R.drawable.b2;
+//        buttonGraphics[2] = R.drawable.b3;
+//        buttonGraphics[3] = R.drawable.b4;
+//        buttonGraphics[4] = R.drawable.b5;
+//        buttonGraphics[5] = R.drawable.b6;
 
         buttonGraphicLocations = new int[numberOfElements];
 
@@ -105,6 +118,22 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             buttonGraphicLocations[swapIndex] = temp;
         }
     }
+
+    protected void registerForImages(){
+        rlselected = registerForActivityResult(
+                new ActivityResultContracts.StartActivityForResult(),
+                result->{
+                    if(result.getResultCode()==AppCompatActivity.RESULT_OK){
+                        Intent data= result.getData();
+                        if(data!=null){
+                            selected = data.getIntegerArrayListExtra("selected");
+                        }
+                    }
+                }
+        );
+
+    }
+
 
     @Override
     public void onClick(View v) {
