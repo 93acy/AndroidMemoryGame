@@ -21,14 +21,14 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
 //    ActivityResultLauncher<Intent> rlselected;
 
-    private ArrayList<Integer> selected;
+    private ArrayList<String> selected;
 
     private int numberOfElements;
 
     private MemoryButton[] buttons;
 
     private int[] buttonGraphicLocations;
-    private int[] buttonGraphics;
+    private String[] buttonGraphics;
 
     private MemoryButton selectedButton1;
     private MemoryButton selectedButton2;
@@ -46,7 +46,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 //        registerForImages();
 
         Intent intent= getIntent();
-        selected = (ArrayList<Integer>)intent.getIntegerArrayListExtra("selected");
+        selected = (ArrayList<String>)intent.getStringArrayListExtra("selected");
 
 
         numCorrectMatches = 0;
@@ -62,7 +62,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
         buttons = new MemoryButton[numberOfElements];
 
-        buttonGraphics = new int[numberOfElements / 2];
+        buttonGraphics = new String[numberOfElements / 2];
 
         for(int i =0; i<buttonGraphics.length;i++){
             buttonGraphics[i]=selected.get(i);
@@ -161,7 +161,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             return;
         }
 
-        if (selectedButton1.getFrontDrawableId() == button.getFrontDrawableId()) {
+        if (selectedButton1.getFrontDrawablePath() == button.getFrontDrawablePath()) {
             button.flip();
 
             button.setMatched(true);

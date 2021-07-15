@@ -1,6 +1,9 @@
 package com.example.androidmemorygame;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.widget.GridLayout;
 
@@ -10,24 +13,24 @@ import androidx.appcompat.widget.AppCompatDrawableManager;
 public class MemoryButton extends AppCompatButton {
     protected int row;
     protected int column;
-    protected int frontDrawableId;
+    protected String frontDrawablePath;
 
     protected boolean isFlipped = false;
     protected boolean isMatched = false;
 
-    protected Drawable front;
+    protected Bitmap front;
     protected Drawable back;
 
     public MemoryButton(Context context, int r, int c,
-                        int frontImageDrawableId) {
+                        String frontDrawablePath) {
         super(context);
 
         row = r;
         column = c;
-        frontDrawableId = frontImageDrawableId;
+        this.frontDrawablePath = frontDrawablePath;
 
         //noinspection RestrictedApi
-        front = AppCompatDrawableManager.get().getDrawable(context, frontImageDrawableId);
+        front = BitmapFactory.decodeFile(frontDrawablePath);
         //noinspection RestrictedApi
         back = AppCompatDrawableManager.get().getDrawable(context, R.drawable.cross);
 
@@ -47,8 +50,8 @@ public class MemoryButton extends AppCompatButton {
         isMatched = matched;
     }
 
-    public int getFrontDrawableId() {
-        return frontDrawableId;
+    public String getFrontDrawablePath() {
+        return frontDrawablePath;
     }
 
     public void flip() {
@@ -60,7 +63,7 @@ public class MemoryButton extends AppCompatButton {
            setBackground(back);
            isFlipped = false;
         } else {
-            setBackground(front);
+            setBackground(new BitmapDrawable(getResources(), front));
             isFlipped = true;
         }
 

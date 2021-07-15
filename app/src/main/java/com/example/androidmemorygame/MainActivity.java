@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     int[] ids = new int[]{R.id.imageview1, R.id.imageview2, R.id.imageview3, R.id.imageview4, R.id.imageview5, R.id.imageview6, R.id.imageview7, R.id.imageview8,
             R.id.imageview9, R.id.imageview10, R.id.imageview11, R.id.imageview12, R.id.imageview13, R.id.imageview14, R.id.imageview15, R.id.imageview16, R.id.imageview17,R.id.imageview18,R.id.imageview19,R.id.imageview20};
     int count=0;
-    ArrayList<Integer> selected = new ArrayList<>();
+    ArrayList<String> selected = new ArrayList<>();
     ProgressBar progressbar;
     TextView progressbartext;
     boolean firstTime = true;
@@ -202,11 +202,11 @@ public class MainActivity extends AppCompatActivity {
 
                 imageview.setOnClickListener(v -> {
                     imageview.setColorFilter(MainActivity.this.getResources().getColor(R.color.purple_200));
-                    selected.add(imageview.getId());
+                    selected.add(desFiles.get(i).getAbsolutePath());
                     count++;
                     if(count==6){
                         Intent intent = new Intent(MainActivity.this, GameActivity.class);
-                        intent.putIntegerArrayListExtra("selected", selected);
+                        intent.putStringArrayListExtra("selected", selected);
                         startActivity(intent);
                     }
                 });
