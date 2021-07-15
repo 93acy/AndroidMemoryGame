@@ -67,6 +67,5 @@ public class MemoryButton extends AppCompatButton {
             isFlipped = true;
         }
 
-
     }
 }

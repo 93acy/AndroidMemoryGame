@@ -19,7 +19,6 @@ import java.util.Random;
 
 public class GameActivity extends AppCompatActivity implements View.OnClickListener {
 
-//    ActivityResultLauncher<Intent> rlselected;
 
     private ArrayList<String> selected;
 
@@ -36,8 +35,9 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     private boolean isBusy = false;
 
     private Chronometer timeElapsed;
-    private int numCorrectMatches;
+    private int numCorrectMatches=0;
     private TextView correct_matches;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,9 +49,9 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         selected = (ArrayList<String>)intent.getStringArrayListExtra("selected");
 
 
-        numCorrectMatches = 0;
         correct_matches = (TextView) findViewById(R.id.num_correct_matches);
         correct_matches.setText(numCorrectMatches + " " + getString(R.string.of_matches));
+
 
         GridLayout gridLayout = (GridLayout) findViewById(R.id.grid_layout_4x3);
 
@@ -190,6 +190,19 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                     isBusy = false;
                 }
             }, 500);
+
+
+        }
+
+        if (numCorrectMatches == 6) {
+            final Handler endhandler = new Handler();
+            endhandler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    Intent intentback = new Intent(GameActivity.this, MainActivity.class);
+                    startActivity(intentback);
+                }
+            }, 3000);
         }
     }
 }

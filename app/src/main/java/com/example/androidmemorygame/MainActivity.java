@@ -44,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
     Thread bgThread;
 
 
+    Intent intent= getIntent();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
