@@ -135,6 +135,9 @@ public class MainActivity extends AppCompatActivity
             button.setMatched(true);
             selectedButton1.setMatched(true);
             numCorrectMatches++;
+            if (numCorrectMatches == 6) {
+                timeElapsed.stop();
+            }
             selectedButton1.setEnabled(false);
             button.setEnabled(false);
             selectedButton1 = null;
