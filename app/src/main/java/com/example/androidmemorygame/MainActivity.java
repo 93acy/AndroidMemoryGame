@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.KeyEvent;
@@ -38,11 +40,13 @@ public class MainActivity extends AppCompatActivity {
     int[] ids = new int[]{R.id.imageview1, R.id.imageview2, R.id.imageview3, R.id.imageview4, R.id.imageview5, R.id.imageview6, R.id.imageview7, R.id.imageview8,
             R.id.imageview9, R.id.imageview10, R.id.imageview11, R.id.imageview12, R.id.imageview13, R.id.imageview14, R.id.imageview15, R.id.imageview16, R.id.imageview17,R.id.imageview18,R.id.imageview19,R.id.imageview20};
     int count=0;
-    ArrayList<Integer> selected = new ArrayList<>();
+    //ArrayList<Integer> selected = new ArrayList<>();
     ProgressBar progressbar;
     TextView progressbartext;
     boolean firstTime = true;
     Thread bgThread;
+    //ArrayList<Bitmap> selected = new ArrayList<>();
+    ArrayList<String> selected = new ArrayList<>();
 
 
     @Override
@@ -202,16 +206,26 @@ public class MainActivity extends AppCompatActivity {
                 Bitmap bitmap = BitmapFactory.decodeFile(desFiles.get(i).getAbsolutePath());
                 ImageView imageview = findViewById(ids[i]);
                 imageview.setImageBitmap(bitmap);
+                //Drawable d = new BitmapDrawable(getResources(), bitmap);
 
                 imageview.setOnClickListener(v -> {
                     if(imageview.getColorFilter() == null){
                         imageview.setColorFilter(MainActivity.this.getResources().getColor(R.color.purple_200));
-                        selected.add(imageview.getId());
+                        //selected.add(imageview.getId());
+                        //selected.add(((BitmapDrawable)imageview.getDrawable()).getBitmap());
+                        for(int i=0; i<20; i++){
+                            if(imageview.getId() == ids[i]){
+                                selected.add(desFiles.get(i).getAbsolutePath());
+                                break;
+                            }
+                        }
                         count++;
 
                         if(count==6){
                             Intent intent = new Intent(MainActivity.this, NextActivity.class);
-                            intent.putIntegerArrayListExtra("selected", selected);
+                            //intent.putIntegerArrayListExtra("selected", selected);
+                            //intent.putParcelableArrayListExtra("selected", selected);
+                            intent.putStringArrayListExtra("selected", selected);
                             startActivity(intent);
                         }
 
@@ -219,7 +233,9 @@ public class MainActivity extends AppCompatActivity {
 
                     else{
                         imageview.setColorFilter(null);
-                        selected.remove((Object)imageview.getId());
+                        //selected.remove((Object)imageview.getId());
+                        //selected.remove((Object)((BitmapDrawable)imageview.getDrawable()).getBitmap());
+                        selected.remove((Object)desFiles.get(i).getAbsolutePath());
                         count--;
                     }
                 });
