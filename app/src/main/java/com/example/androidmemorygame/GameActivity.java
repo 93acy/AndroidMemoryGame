@@ -13,8 +13,7 @@ import android.widget.TextView;
 
 import java.util.Random;
 
-public class MainActivity extends AppCompatActivity
-    implements View.OnClickListener {
+public class GameActivity extends AppCompatActivity implements View.OnClickListener {
 
     private int numberOfElements;
 
@@ -35,7 +34,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_game);
 
         numCorrectMatches = 0;
         correct_matches = (TextView) findViewById(R.id.num_correct_matches);
