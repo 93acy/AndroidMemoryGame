@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Environment;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -93,7 +94,9 @@ public class MainActivity extends AppCompatActivity {
         progressbar = findViewById(R.id.progressbar);
         progressbar.setMax(100);
         progressbartext = findViewById(R.id.progressbartext);
+
     }
+
 
     public boolean downloadWeb(String webURL){
 
@@ -201,13 +204,23 @@ public class MainActivity extends AppCompatActivity {
                 imageview.setImageBitmap(bitmap);
 
                 imageview.setOnClickListener(v -> {
-                    imageview.setColorFilter(MainActivity.this.getResources().getColor(R.color.purple_200));
-                    selected.add(imageview.getId());
-                    count++;
-                    if(count==6){
-                        Intent intent = new Intent(MainActivity.this, NextActivity.class);
-                        intent.putIntegerArrayListExtra("selected", selected);
-                        startActivity(intent);
+                    if(imageview.getColorFilter() == null){
+                        imageview.setColorFilter(MainActivity.this.getResources().getColor(R.color.purple_200));
+                        selected.add(imageview.getId());
+                        count++;
+
+                        if(count==6){
+                            Intent intent = new Intent(MainActivity.this, NextActivity.class);
+                            intent.putIntegerArrayListExtra("selected", selected);
+                            startActivity(intent);
+                        }
+
+                    }
+
+                    else{
+                        imageview.setColorFilter(null);
+                        selected.remove((Object)imageview.getId());
+                        count--;
                     }
                 });
 
