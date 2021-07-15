@@ -17,9 +17,9 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class GameActivity<IntegerArray> extends AppCompatActivity implements View.OnClickListener {
+public class GameActivity extends AppCompatActivity implements View.OnClickListener {
 
-    ActivityResultLauncher<Intent> rlselected;
+//    ActivityResultLauncher<Intent> rlselected;
 
     private ArrayList<Integer> selected;
 
@@ -43,6 +43,11 @@ public class GameActivity<IntegerArray> extends AppCompatActivity implements Vie
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+//        registerForImages();
+
+        Intent intent= getIntent();
+        selected = (ArrayList<Integer>)intent.getIntegerArrayListExtra("selected");
+
 
         numCorrectMatches = 0;
         correct_matches = (TextView) findViewById(R.id.num_correct_matches);
@@ -60,7 +65,6 @@ public class GameActivity<IntegerArray> extends AppCompatActivity implements Vie
         buttonGraphics = new int[numberOfElements / 2];
 
         for(int i =0; i<buttonGraphics.length;i++){
-
             buttonGraphics[i]=selected.get(i);
         }
 
@@ -119,20 +123,20 @@ public class GameActivity<IntegerArray> extends AppCompatActivity implements Vie
         }
     }
 
-    protected void registerForImages(){
-        rlselected = registerForActivityResult(
-                new ActivityResultContracts.StartActivityForResult(),
-                result->{
-                    if(result.getResultCode()==AppCompatActivity.RESULT_OK){
-                        Intent data= result.getData();
-                        if(data!=null){
-                            selected = data.getIntegerArrayListExtra("selected");
-                        }
-                    }
-                }
-        );
-
-    }
+//    protected void registerForImages(){
+//        rlselected = registerForActivityResult(
+//                new ActivityResultContracts.StartActivityForResult(),
+//                result->{
+//                    if(result.getResultCode()==AppCompatActivity.RESULT_OK){
+//                        Intent data= result.getData();
+//                        if(data!=null){
+//                            selected = data.getIntegerArrayListExtra("selected");
+//                        }
+//                    }
+//                }
+//        );
+//
+//    }
 
 
     @Override
