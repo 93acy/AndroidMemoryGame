@@ -5,6 +5,7 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
@@ -37,6 +38,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     private Chronometer timeElapsed;
     private int numCorrectMatches=0;
     private TextView correct_matches;
+    private MediaPlayer music;
 
 
     @Override
@@ -44,6 +46,9 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 //        registerForImages();
+
+        MediaPlayer music = MediaPlayer.create(GameActivity.this, R.raw.backgroundmusic);
+        music.start();
 
         Intent intent= getIntent();
         selected = (ArrayList<String>)intent.getStringArrayListExtra("selected");
@@ -166,9 +171,14 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
             button.setMatched(true);
             selectedButton1.setMatched(true);
+
+            MediaPlayer score = MediaPlayer.create(GameActivity.this, R.raw.score);
+            score.start();
+
             numCorrectMatches++;
             if (numCorrectMatches == 6) {
                 timeElapsed.stop();
+
             }
             selectedButton1.setEnabled(false);
             button.setEnabled(false);
@@ -201,9 +211,10 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 public void run() {
                     Intent intentback = new Intent(GameActivity.this, MainActivity.class);
                     startActivity(intentback);
+                    music.release();
                 }
             }, 3000);
-        }
+            }
     }
 
     @Override
