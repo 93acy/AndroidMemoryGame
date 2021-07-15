@@ -33,9 +33,9 @@ public class MemoryButton extends AppCompatButton {
 
         setBackground(back);
 
-        GridLayout.LayoutParams tempParams = new GridLayout.LayoutParams(GridLayout.spec(r), GridLayout.spec(c));
-        tempParams.width = (int) getResources().getDisplayMetrics().density * 50;
-        tempParams.height = (int) getResources().getDisplayMetrics().density * 50;
+        GridLayout.LayoutParams tempParams = new GridLayout.LayoutParams(GridLayout.spec(r, 1f), GridLayout.spec(c, 1f));
+        tempParams.width = 0;
+        tempParams.height = 0;
         setLayoutParams(tempParams);
     }
 

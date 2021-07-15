@@ -4,9 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.SystemClock;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Chronometer;
 import android.widget.GridLayout;
+import android.widget.TextView;
 
 import java.util.Random;
 
@@ -25,10 +28,18 @@ public class MainActivity extends AppCompatActivity
 
     private boolean isBusy = false;
 
+    private Chronometer timeElapsed;
+    private int numCorrectMatches;
+    private TextView correct_matches;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        numCorrectMatches = 0;
+        correct_matches = (TextView) findViewById(R.id.num_correct_matches);
+        correct_matches.setText(numCorrectMatches + " " + getString(R.string.of_matches));
 
         GridLayout gridLayout = (GridLayout) findViewById(R.id.grid_layout_4x3);
 
@@ -61,6 +72,23 @@ public class MainActivity extends AppCompatActivity
                 gridLayout.addView(tempButton);
             }
         }
+
+        timeElapsed  = (Chronometer) findViewById(R.id.chronom);
+        timeElapsed.setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
+            @Override
+            public void onChronometerTick(Chronometer cArg) {
+                long time = SystemClock.elapsedRealtime() - cArg.getBase();
+                int h   = (int)(time /3600000);
+                int m = (int)(time - h*3600000)/60000;
+                int s= (int)(time - h*3600000- m*60000)/1000 ;
+                String hh = h < 10 ? "0"+h: h+"";
+                String mm = m < 10 ? "0"+m: m+"";
+                String ss = s < 10 ? "0"+s: s+"";
+                cArg.setText(hh+":"+mm+":"+ss);
+            }
+        });
+        timeElapsed.setBase(SystemClock.elapsedRealtime());
+        timeElapsed.start();
 
     }
 
@@ -106,10 +134,11 @@ public class MainActivity extends AppCompatActivity
 
             button.setMatched(true);
             selectedButton1.setMatched(true);
-
+            numCorrectMatches++;
             selectedButton1.setEnabled(false);
             button.setEnabled(false);
             selectedButton1 = null;
+            correct_matches.setText(numCorrectMatches + " " + getString(R.string.of_matches));
         } else {
             selectedButton2 = button;
             selectedButton2.flip();
