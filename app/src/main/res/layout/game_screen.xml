@@ -1,0 +1,171 @@
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:orientation="vertical"-->
+<!--    android:background="#DAC5FF"-->
+<!--    tools:context=".gameActivity">-->
+
+
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:layout_marginStart="10dp"-->
+<!--        android:layout_marginTop="100dp"-->
+<!--        android:layout_weight="1">-->
+
+
+<!--        <androidx.appcompat.widget.AppCompatImageView-->
+<!--            android:id="@+id/card1"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="1"-->
+<!--            android:layout_marginEnd="10dp"-->
+<!--            android:src="@drawable/yugiohback"-->
+<!--            android:contentDescription="card1"-->
+<!--            android:onClick="onClick"/>-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/card2"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="1"-->
+<!--            android:layout_marginEnd="10dp"-->
+<!--            android:src="@drawable/yugiohback"-->
+<!--            android:contentDescription="card2"-->
+<!--            android:clickable="true"-->
+<!--            android:focusable="true"/>-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/card3"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="1"-->
+<!--            android:layout_marginEnd="10dp"-->
+<!--            android:src="@drawable/yugiohback"-->
+<!--            android:contentDescription="card3"-->
+<!--            android:clickable="true"-->
+<!--            android:focusable="true"/>-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/card4"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="1"-->
+<!--            android:layout_marginEnd="10dp"-->
+<!--            android:src="@drawable/yugiohback"-->
+<!--            android:contentDescription="card4"-->
+<!--            android:clickable="true"-->
+<!--            android:focusable="true"/>-->
+
+<!--</LinearLayout>-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:layout_marginStart="10dp"-->
+<!--        android:layout_weight="1">-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/card5"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="1"-->
+<!--            android:layout_marginEnd="10dp"-->
+<!--            android:src="@drawable/yugiohback"-->
+<!--            android:contentDescription="card5"-->
+<!--            android:clickable="true"-->
+<!--            android:focusable="true"/>-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/card6"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="1"-->
+<!--            android:layout_marginEnd="10dp"-->
+<!--            android:src="@drawable/yugiohback"-->
+<!--            android:contentDescription="card6"-->
+<!--            android:clickable="true"-->
+<!--            android:focusable="true"/>-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/card7"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="1"-->
+<!--            android:layout_marginEnd="10dp"-->
+<!--            android:src="@drawable/yugiohback"-->
+<!--            android:contentDescription="card7"-->
+<!--            android:clickable="true"-->
+<!--            android:focusable="true"/>-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/card8"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="1"-->
+<!--            android:layout_marginEnd="10dp"-->
+<!--            android:src="@drawable/yugiohback"-->
+<!--            android:contentDescription="card8"-->
+<!--            android:clickable="true"-->
+<!--            android:focusable="true"/>-->
+
+<!--    </LinearLayout>-->
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:layout_marginStart="10dp"-->
+<!--        android:layout_marginBottom="100dp"-->
+<!--        android:layout_weight="1">-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/card9"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="1"-->
+<!--            android:layout_marginEnd="10dp"-->
+<!--            android:src="@drawable/yugiohback"-->
+<!--            android:contentDescription="card9"-->
+<!--            android:clickable="true"-->
+<!--            android:focusable="true"/>-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/card10"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="1"-->
+<!--            android:layout_marginEnd="10dp"-->
+<!--            android:src="@drawable/yugiohback"-->
+<!--            android:contentDescription="card10"-->
+<!--            android:clickable="true"-->
+<!--            android:focusable="true"/>-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/card11"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="1"-->
+<!--            android:layout_marginEnd="10dp"-->
+<!--            android:src="@drawable/yugiohback"-->
+<!--            android:contentDescription="card11"-->
+<!--            android:clickable="true"-->
+<!--            android:focusable="true"/>-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/card12"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_weight="1"-->
+<!--            android:layout_marginEnd="10dp"-->
+<!--            android:src="@drawable/yugiohback"-->
+<!--            android:contentDescription="card12"-->
+<!--            android:clickable="true"-->
+<!--            android:focusable="true"/>-->
+
+<!--    </LinearLayout>-->
+<!--</LinearLayout>-->
