@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ResultActivity"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="RESULT"-->
+<!--        android:textSize="20sp"-->
+<!--        android:layout_marginTop="50dp"/>-->
+
+    <ImageView
+        android:id="@+id/resultLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="103dp"
+        android:layout_marginTop="60dp"
+        android:src="@drawable/congrats"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="Time Taken:"
+        android:textSize="30sp" />
+
+
+    <TextView
+        android:id="@+id/totalScoreLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:hint="Time Taken"
+        android:textStyle="bold"
+        android:textSize="30sp" />
+
+    <Button
+        android:layout_width="140dp"
+        android:layout_height="70dp"
+        android:text="PLAY AGAIN"
+        android:textSize="18sp"
+        android:layout_marginTop="80dp"
+        android:background="@color/blue"
+        android:onClick="backMain"/>
+
+
+
+
+</LinearLayout>
