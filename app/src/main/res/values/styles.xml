@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="imgDisplayStyle">
+    <style name="imgDisplayStyle" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:layout_width">96dp</item>
         <item name="android:layout_height">96dp</item>
         <item name="android:foreground">@drawable/border</item>
