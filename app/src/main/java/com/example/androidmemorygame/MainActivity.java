@@ -57,20 +57,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        MediaPlayer music = MediaPlayer.create(MainActivity.this, R.raw.maplestory);
-        music.start();
-
         webURL = ((EditText) findViewById(R.id.webURL)).getText().toString();
+
+        music = MediaPlayer.create(MainActivity.this, R.raw.maplestory);
+        music.start();
 
         selectText=findViewById(R.id.selectText);
 
         startGame = findViewById(R.id.startGameBtn);
         startGame.setOnClickListener(v->{
-            music.release();
             Intent intent = new Intent(MainActivity.this, GameActivity.class);
             intent.putStringArrayListExtra("selected", selected);
             startActivity(intent);
-
+            music.stop();
         });
 
         Button fetch = findViewById(R.id.fetch);
@@ -106,8 +105,11 @@ public class MainActivity extends AppCompatActivity {
             }
 
             bgThread = new Thread(new Runnable() {
+
                 @Override
                 public void run() {
+
+                    music.start();
                     if (downloadWeb(((EditText) findViewById(R.id.webURL)).getText().toString())) {
                         List<File> destfiles = createFilesDir();
                         downloadImg(imgURLs, destfiles);
@@ -311,7 +313,6 @@ public class MainActivity extends AppCompatActivity {
         inputMethodManager.hideSoftInputFromWindow(
                 activity.getCurrentFocus().getWindowToken(), 0);
     }
-
     @Override
     public void onBackPressed() {
         finish();

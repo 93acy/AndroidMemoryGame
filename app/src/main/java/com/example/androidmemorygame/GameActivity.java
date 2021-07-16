@@ -15,7 +15,9 @@ import android.widget.Chronometer;
 import android.widget.GridLayout;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Random;
 
 public class GameActivity extends AppCompatActivity implements View.OnClickListener {
@@ -47,7 +49,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_game);
 //        registerForImages();
 
-        MediaPlayer music = MediaPlayer.create(GameActivity.this, R.raw.backgroundmusic);
+        music = MediaPlayer.create(GameActivity.this, R.raw.backgroundmusic);
         music.start();
 
         Intent intent= getIntent();
@@ -178,6 +180,14 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             numCorrectMatches++;
             if (numCorrectMatches == 6) {
                 timeElapsed.stop();
+                long stoppedTime = SystemClock.elapsedRealtime() - timeElapsed.getBase();
+                //Convert to int in seconds
+                int resultTime = (int) (stoppedTime) / 1000;
+                //Send intent
+                Intent intent  = new Intent(GameActivity.this,ResultActivity.class);
+                String displayTheTime = String.valueOf(resultTime) + " seconds";
+                intent.putExtra("resultTime",displayTheTime);
+                startActivity(intent);
 
             }
             selectedButton1.setEnabled(false);
@@ -204,23 +214,41 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
         }
 
-        if (numCorrectMatches == 6) {
-            final Handler endhandler = new Handler();
-            endhandler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    Intent intentback = new Intent(GameActivity.this, MainActivity.class);
-                    startActivity(intentback);
-                    music.release();
-                }
-            }, 3000);
-            }
+//        if (numCorrectMatches == 6) {
+////            final Handler endhandler = new Handler();
+////            endhandler.postDelayed(new Runnable() {
+////                @Override
+////                public void run() {
+////                    Intent intentback = new Intent(GameActivity.this, MainActivity.class);
+////                    startActivity(intentback);
+////                    music.release();
+////                }
+////            }, 3000);
+//
+//
+////            long stoppedTime = SystemClock.elapsedRealtime() - timeElapsed.getBase();
+////
+////            // Create the desired format
+////            SimpleDateFormat formatter = new SimpleDateFormat("mm:ss", Locale.getDefault());
+////            TextView totalScoreLabel = (TextView) findViewById(R.id.totalScoreLabel);
+////            totalScoreLabel.setText(formatter.format(stoppedTime)); // Set the formatted time in the textview
+//
+//            //Show Result
+////            Intent intent  = new Intent(getApplicationContext(),ResultActivity.class);
+//////            intent.putExtra("RIGHT_ANSWER_COUNT",rightAnswerCount);
+////            startActivity(intent);
+////            music.release();
+//
+//
+//            }
     }
 
     @Override
     public void onBackPressed() {
         finish();
+        music.stop();
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 }
+
