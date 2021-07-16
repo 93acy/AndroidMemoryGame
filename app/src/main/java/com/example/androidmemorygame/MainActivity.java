@@ -68,6 +68,8 @@ public class MainActivity extends AppCompatActivity {
 
         startGame = findViewById(R.id.startGameBtn);
         startGame.setOnClickListener(v->{
+            MediaPlayer play = MediaPlayer.create(MainActivity.this, R.raw.play);
+            play.start();
             Intent intent = new Intent(MainActivity.this, GameActivity.class);
             intent.putStringArrayListExtra("selected", selected);
             startActivity(intent);
