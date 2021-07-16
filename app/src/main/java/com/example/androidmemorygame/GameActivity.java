@@ -49,7 +49,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_game);
 //        registerForImages();
 
-        MediaPlayer music = MediaPlayer.create(GameActivity.this, R.raw.backgroundmusic);
+        music = MediaPlayer.create(GameActivity.this, R.raw.backgroundmusic);
         music.start();
 
         Intent intent= getIntent();
@@ -246,6 +246,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onBackPressed() {
         finish();
+        music.stop();
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }

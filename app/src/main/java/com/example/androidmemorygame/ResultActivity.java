@@ -36,5 +36,6 @@ public class ResultActivity extends AppCompatActivity {
 
     public void backMain(View view){
         startActivity(new Intent(ResultActivity.this, MainActivity.class));
+        music.stop();
     }
 }

@@ -6,9 +6,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.Handler;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
     boolean firstTime = true;
     Thread bgThread;
     Button startGame;
-
+    MediaPlayer music;
 
 
     @Override
@@ -57,9 +57,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
         webURL = ((EditText) findViewById(R.id.webURL)).getText().toString();
+
+        music = MediaPlayer.create(MainActivity.this, R.raw.maplestory);
+        music.start();
 
         selectText=findViewById(R.id.selectText);
 
@@ -68,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, GameActivity.class);
             intent.putStringArrayListExtra("selected", selected);
             startActivity(intent);
+            music.stop();
         });
 
         Button fetch = findViewById(R.id.fetch);
@@ -103,8 +105,11 @@ public class MainActivity extends AppCompatActivity {
             }
 
             bgThread = new Thread(new Runnable() {
+
                 @Override
                 public void run() {
+
+                    music.start();
                     if (downloadWeb(((EditText) findViewById(R.id.webURL)).getText().toString())) {
                         List<File> destfiles = createFilesDir();
                         downloadImg(imgURLs, destfiles);
@@ -308,7 +313,6 @@ public class MainActivity extends AppCompatActivity {
         inputMethodManager.hideSoftInputFromWindow(
                 activity.getCurrentFocus().getWindowToken(), 0);
     }
-
     @Override
     public void onBackPressed() {
         finish();
