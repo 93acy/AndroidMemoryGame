@@ -21,6 +21,10 @@ public class ResultActivity extends AppCompatActivity {
         ImageView resultLabel = (ImageView) findViewById(R.id.resultLabel);
         TextView totalScoreLabel = (TextView) findViewById(R.id.totalScoreLabel);
 
+
+        MediaPlayer victory = MediaPlayer.create(ResultActivity.this, R.raw.victory);
+        victory.start();
+
         String resultTime = getIntent().getStringExtra("resultTime");
         totalScoreLabel.setText(resultTime);
 
@@ -35,6 +39,6 @@ public class ResultActivity extends AppCompatActivity {
 
     public void backMain(View view){
         startActivity(new Intent(ResultActivity.this, MainActivity.class));
-        music.stop();
+//        music.stop();
     }
 }

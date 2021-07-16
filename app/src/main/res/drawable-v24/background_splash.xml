@@ -4,7 +4,8 @@
     <item android:drawable="@android:color/white" />
     <item>
         <bitmap
-            android:gravity="center"
+            android:layout_width="152dp"
+            android:layout_height="331dp"
             android:src="@drawable/splash_logo"/>
     </item>
 </layer-list>
