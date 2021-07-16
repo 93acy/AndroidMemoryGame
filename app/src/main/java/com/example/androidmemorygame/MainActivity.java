@@ -160,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
 
 
             //<img src="https://cdn.stocksnap.io/img-thumbs/280h/bed-family_JHFDNCSWTX.jpg"
-            Pattern pattern = Pattern.compile("<img src=\"([^\"]+)\\.(jpg|png|jpeg|svg)");
+            Pattern pattern = Pattern.compile("<img src=\"([^\"]+)\\.(jpg|png|jpeg)");
             Matcher matcher = pattern.matcher(htmlContent);
             for (int i = 0; i < 20; i++) {
                 boolean matchFound = matcher.find();
