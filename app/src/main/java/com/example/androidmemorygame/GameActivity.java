@@ -180,6 +180,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             numCorrectMatches++;
             if (numCorrectMatches == 6) {
                 timeElapsed.stop();
+                music.stop();
                 long stoppedTime = SystemClock.elapsedRealtime() - timeElapsed.getBase();
                 //Convert to int in seconds
                 int resultTime = (int) (stoppedTime) / 1000;

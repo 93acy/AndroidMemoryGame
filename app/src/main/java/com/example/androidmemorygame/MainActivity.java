@@ -50,12 +50,14 @@ public class MainActivity extends AppCompatActivity {
     Thread bgThread;
     Button startGame;
     MediaPlayer music;
+    MediaPlayer startsound;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         webURL = ((EditText) findViewById(R.id.webURL)).getText().toString();
 
