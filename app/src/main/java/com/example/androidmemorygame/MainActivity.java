@@ -68,6 +68,8 @@ public class MainActivity extends AppCompatActivity {
 
         startGame = findViewById(R.id.startGameBtn);
         startGame.setOnClickListener(v->{
+            MediaPlayer play = MediaPlayer.create(MainActivity.this, R.raw.play);
+            play.start();
             Intent intent = new Intent(MainActivity.this, GameActivity.class);
             intent.putStringArrayListExtra("selected", selected);
             startActivity(intent);
@@ -160,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
 
 
             //<img src="https://cdn.stocksnap.io/img-thumbs/280h/bed-family_JHFDNCSWTX.jpg"
-            Pattern pattern = Pattern.compile("<img src=\"([^\"]+)\\.(jpg|png|jpeg|svg)");
+            Pattern pattern = Pattern.compile("<img src=\"([^\"]+)\\.(jpg|png|jpeg)");
             Matcher matcher = pattern.matcher(htmlContent);
             for (int i = 0; i < 20; i++) {
                 boolean matchFound = matcher.find();
